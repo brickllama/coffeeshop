@@ -41,5 +41,5 @@ export constexpr int CoffeeGrind_difference(CoffeeGrind original,
 module :private; /* Implementation Unit. */
 
 constexpr int CoffeeGrind_difference(CoffeeGrind original, CoffeeGrind target) {
-  return 0;
+  return static_cast<int>(target) - static_cast<int>(original);
 }
