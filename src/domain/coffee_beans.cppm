@@ -56,6 +56,8 @@ public:
 
   CoffeeGrind grind() const;
 
+  void set_grind(CoffeeGrind target);
+
 private:
   double grams_;
   CoffeeRoast roast_;
@@ -73,3 +75,7 @@ double CoffeeBeans::grams() const { return this->grams_; }
 CoffeeRoast CoffeeBeans::roast() const { return this->roast_; }
 
 CoffeeGrind CoffeeBeans::grind() const { return this->grind_; }
+
+void CoffeeBeans::set_grind(CoffeeGrind target) {
+  ///
+}
