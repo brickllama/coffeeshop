@@ -11,7 +11,11 @@ public:
     if (capacity < 0) {
       throw std::runtime_error("COFFEE GRINDER CAPACITY CANNOT BE NEGATIVE!");
     }
+    this->capacity_ = capacity;
   }
+
+  double capacity() const;
+
   virtual ~CoffeeGrinder() {}
 
 private:
@@ -19,3 +23,5 @@ private:
 };
 
 module :private; /* Implementation Unit. */
+
+double CoffeeGrinder::capacity() const { return -1.0; }
