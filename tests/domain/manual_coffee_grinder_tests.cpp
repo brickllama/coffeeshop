@@ -8,9 +8,9 @@ CoffeeBeans coarse_beans() {
   return CoffeeBeans{15.0, CoffeeRoast::light, CoffeeGrind::coarse};
 }
 
-CoffeeBeans fine_beans() {
-  return CoffeeBeans{15.0, CoffeeRoast::light, CoffeeGrind::fine};
-}
+// CoffeeBeans fine_beans() {
+//   return CoffeeBeans{15.0, CoffeeRoast::light, CoffeeGrind::fine};
+// }
 } // namespace
 
 TEST(ManualCoffeeGrinder, grind_Should_Change_CoffeeBean_Grind) {
