@@ -72,4 +72,4 @@ double CoffeeBeans::grams() const { return this->grams_; }
 
 CoffeeRoast CoffeeBeans::roast() const { return this->roast_; }
 
-CoffeeGrind CoffeeBeans::grind() const { return static_cast<CoffeeGrind>(-1); }
+CoffeeGrind CoffeeBeans::grind() const { return this->grind_; }
