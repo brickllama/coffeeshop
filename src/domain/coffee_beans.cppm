@@ -64,4 +64,4 @@ constexpr int CoffeeGrind_difference(CoffeeGrind original, CoffeeGrind target) {
   return static_cast<int>(target) - static_cast<int>(original);
 }
 
-double CoffeeBeans::grams() const { return -1; }
+double CoffeeBeans::grams() const { return this->grams_; }
