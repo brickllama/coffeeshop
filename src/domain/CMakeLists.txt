@@ -6,5 +6,6 @@ target_sources(domain
             coffee_beans.cppm
             coffee_grinder.cppm
             electric_coffee_grinder.cppm
+            liquid.cppm
             manual_coffee_grinder.cppm
 )
