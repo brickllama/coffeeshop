@@ -23,4 +23,4 @@ private:
 
 module :private; /* Implementation Unit. */
 
-double Liquid::volume() const { return -1.0; }
+double Liquid::volume() const { return this->volume_; }
