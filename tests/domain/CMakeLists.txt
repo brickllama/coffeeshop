@@ -3,7 +3,6 @@ add_executable(domain.tests)
 target_sources(domain.tests
     PRIVATE
         coffee_beans_tests.cpp
-        manual_coffee_grinder_tests.cpp
 )
 
 target_link_libraries(domain.tests

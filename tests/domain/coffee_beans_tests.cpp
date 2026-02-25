@@ -20,7 +20,7 @@ TEST(CoffeeBeans,
 TEST(CoffeeBeans, CoffeeBeans_Should_Throw_If_Grams_Negative) {
   double illegal_grams = -1;
   ASSERT_THROW(
-      (CoffeeBeans{illegal_grams, CoffeeRoast::light, CoffeeGrind::whole}),
+      CoffeeBeans(illegal_grams, CoffeeRoast::light, CoffeeGrind::whole),
       std::runtime_error);
 }
 
