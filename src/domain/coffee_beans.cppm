@@ -1,6 +1,7 @@
 module; /* Global Module Fragment. */
 
 #include <cstdint>
+#include <stdexcept>
 
 export module CoffeeBeans; /* Interface Unit. */
 
@@ -42,7 +43,11 @@ export class CoffeeBeans {
 public:
   explicit CoffeeBeans(double grams, CoffeeRoast roast,
                        CoffeeGrind grind = CoffeeGrind::whole)
-      : grams_(grams), roast_(roast), grind_(grind) {}
+      : roast_(roast), grind_(grind) {
+    if (grams < 0) {
+      throw std::runtime_error("COFFEE BEAN QUANTITY CANNOT BE NEGATIVE!");
+    }
+  }
 
   double grams() const;
 
