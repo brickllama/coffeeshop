@@ -47,6 +47,7 @@ public:
     if (grams < 0) {
       throw std::runtime_error("COFFEE BEAN QUANTITY CANNOT BE NEGATIVE!");
     }
+    this->grams_ = grams;
   }
 
   double grams() const;
