@@ -13,6 +13,8 @@ public:
     this->volume_ = volume;
   }
 
+  double volume() const;
+
   virtual ~Liquid() {}
 
 private:
@@ -20,3 +22,5 @@ private:
 };
 
 module :private; /* Implementation Unit. */
+
+double Liquid::volume() const { return -1.0; }
