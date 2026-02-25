@@ -5,5 +5,6 @@ target_sources(domain
         CXX_MODULES FILES
             coffee_beans.cppm
             coffee_grinder.cppm
+            electric_coffee_grinder.cppm
             manual_coffee_grinder.cppm
 )

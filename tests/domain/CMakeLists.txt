@@ -4,6 +4,7 @@ target_sources(domain.tests
     PRIVATE
         coffee_beans_tests.cpp
         coffee_grinder_tests.cpp
+        electric_coffee_grinder_tests.cpp
         manual_coffee_grinder_tests.cpp
 )
 
