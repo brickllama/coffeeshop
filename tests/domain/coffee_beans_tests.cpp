@@ -35,3 +35,9 @@ TEST(CoffeeBeans, grams_Should_Return_Correct_Value) {
   double expected_weight = 15.0;
   ASSERT_EQ(beans.grams(), expected_weight);
 }
+
+TEST(CoffeeBeans, roast_Should_Return_Correct_Value) {
+  auto beans = coarse_beans();
+  CoffeeRoast expected_roast = CoffeeRoast::light;
+  ASSERT_EQ(beans.roast(), expected_roast);
+}
