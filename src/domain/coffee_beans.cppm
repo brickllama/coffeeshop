@@ -76,6 +76,4 @@ CoffeeRoast CoffeeBeans::roast() const { return this->roast_; }
 
 CoffeeGrind CoffeeBeans::grind() const { return this->grind_; }
 
-void CoffeeBeans::set_grind(CoffeeGrind target) {
-  ///
-}
+void CoffeeBeans::set_grind(CoffeeGrind target) { this->grind_ = target; }
