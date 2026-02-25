@@ -76,4 +76,9 @@ CoffeeRoast CoffeeBeans::roast() const { return this->roast_; }
 
 CoffeeGrind CoffeeBeans::grind() const { return this->grind_; }
 
-void CoffeeBeans::set_grind(CoffeeGrind target) { this->grind_ = target; }
+void CoffeeBeans::set_grind(CoffeeGrind target) {
+  if (CoffeeGrind_difference(this->grind_, target) < 0) {
+    throw std::runtime_error("COFFEE BEANS CANNOT BE UNGROUND!");
+  }
+  this->grind_ = target;
+}

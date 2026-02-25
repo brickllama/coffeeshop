@@ -57,7 +57,9 @@ TEST(CoffeeBeans, set_grind_Should_Update_CoffeeGrind) {
 
 TEST(CoffeeBeans, set_grind_Should_Throw_If_CoffeeGrind_difference_Negative) {
   auto beans = fine_beans();
+  CoffeeGrind original = beans.grind();
   CoffeeGrind target = CoffeeGrind::coarse;
   EXPECT_THROW(beans.set_grind(target), std::runtime_error);
-  ASSERT_NE(beans.grind(), target);
+  EXPECT_NE(beans.grind(), target);
+  ASSERT_EQ(beans.grind(), original);
 }
