@@ -32,8 +32,7 @@ export enum class CoffeeGrind : std::uint8_t {
  * @param target The target grind.
  * @return An integer.
  */
-export constexpr int CoffeeGrind_difference(CoffeeGrind original,
-                                            CoffeeGrind target);
+export int CoffeeGrind_difference(CoffeeGrind original, CoffeeGrind target);
 
 export class CoffeeBeans {
 public:
@@ -91,7 +90,7 @@ private:
 
 module :private; /* Implementation Unit. */
 
-constexpr int CoffeeGrind_difference(CoffeeGrind original, CoffeeGrind target) {
+int CoffeeGrind_difference(CoffeeGrind original, CoffeeGrind target) {
   return static_cast<int>(target) - static_cast<int>(original);
 }
 

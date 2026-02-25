@@ -1,12 +1,17 @@
-add_executable(coffeemakers.tests)
+add_executable(domain.tests)
 
-target_sources(coffeemakers.tests
+target_sources(domain.tests
     PRIVATE
         coffee_beans_tests.cpp
 )
 
-target_link_libraries(coffeemakers.tests
+target_link_libraries(domain.tests
     PRIVATE
         domain
         GTest::gtest_main
 )
+
+if(ENABLE_CODE_COVERAGE)
+    target_compile_options(domain PRIVATE ${COVERAGE_COMPILE_FLAGS})
+    target_link_options(domain.tests PRIVATE ${COVERAGE_LINK_FLAGS})
+endif()

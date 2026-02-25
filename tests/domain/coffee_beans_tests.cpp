@@ -53,7 +53,7 @@ TEST(CoffeeBeans, grind_Should_Return_Correct_Value) {
 TEST(CoffeeBeans, set_grind_Should_Update_CoffeeGrind) {
   auto beans = coarse_beans();
   CoffeeGrind target = CoffeeGrind::fine;
-  beans.set_grind(target);
+  EXPECT_NO_THROW(beans.set_grind(target));
   ASSERT_EQ(beans.grind(), target);
 }
 
