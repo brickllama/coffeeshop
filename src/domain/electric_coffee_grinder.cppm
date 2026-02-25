@@ -14,5 +14,5 @@ module :private;
 
 void ElectricCoffeeGrinder::grind(CoffeeBeans &beans,
                                   CoffeeGrind target_grind) {
-  //
+  beans.set_grind(target_grind);
 }
