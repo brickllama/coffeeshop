@@ -14,3 +14,8 @@ TEST(CoffeeBeans,
   CoffeeGrind target = CoffeeGrind::coarse;
   ASSERT_EQ(CoffeeGrind_difference(original, target), -4);
 }
+
+TEST(CoffeeBeans, grams_Should_Not_Allow_Negative_Value) {
+  ASSERT_THROW(CoffeeBeans(-1, CoffeeRoast::light, CoffeeGrind::whole),
+               std::runtime_error);
+}

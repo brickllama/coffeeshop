@@ -38,8 +38,24 @@ export enum class CoffeeGrind : std::uint8_t {
 export constexpr int CoffeeGrind_difference(CoffeeGrind original,
                                             CoffeeGrind target);
 
+export class CoffeeBeans {
+public:
+  explicit CoffeeBeans(double grams, CoffeeRoast roast,
+                       CoffeeGrind grind = CoffeeGrind::whole)
+      : grams_(grams), roast_(roast), grind_(grind) {}
+
+  double grams() const;
+
+private:
+  double grams_;
+  CoffeeRoast roast_;
+  CoffeeGrind grind_;
+};
+
 module :private; /* Implementation Unit. */
 
 constexpr int CoffeeGrind_difference(CoffeeGrind original, CoffeeGrind target) {
   return static_cast<int>(target) - static_cast<int>(original);
 }
+
+double CoffeeBeans::grams() const { return -1; }
