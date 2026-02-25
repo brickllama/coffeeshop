@@ -41,3 +41,9 @@ TEST(CoffeeBeans, roast_Should_Return_Correct_Value) {
   CoffeeRoast expected_roast = CoffeeRoast::light;
   ASSERT_EQ(beans.roast(), expected_roast);
 }
+
+TEST(CoffeeBeans, grind_Should_Return_Correct_Value) {
+  auto beans = coarse_beans();
+  CoffeeGrind expected_grind = CoffeeGrind::coarse;
+  ASSERT_EQ(beans.grind(), expected_grind);
+}

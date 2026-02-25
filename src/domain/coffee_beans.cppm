@@ -54,6 +54,8 @@ public:
 
   CoffeeRoast roast() const;
 
+  CoffeeGrind grind() const;
+
 private:
   double grams_;
   CoffeeRoast roast_;
@@ -69,3 +71,5 @@ constexpr int CoffeeGrind_difference(CoffeeGrind original, CoffeeGrind target) {
 double CoffeeBeans::grams() const { return this->grams_; }
 
 CoffeeRoast CoffeeBeans::roast() const { return this->roast_; }
+
+CoffeeGrind CoffeeBeans::grind() const { return static_cast<CoffeeGrind>(-1); }
