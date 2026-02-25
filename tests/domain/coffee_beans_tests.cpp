@@ -15,7 +15,7 @@ TEST(CoffeeBeans,
   ASSERT_EQ(CoffeeGrind_difference(original, target), -4);
 }
 
-TEST(CoffeeBeans, CoffeeBeans_Should_Not_Allow_Negative_Weight) {
+TEST(CoffeeBeans, CoffeeBeans_Should_Throw_If_Grams_Negative) {
   double illegal_grams = -1;
   ASSERT_THROW(
       CoffeeBeans(illegal_grams, CoffeeRoast::light, CoffeeGrind::whole),
@@ -53,4 +53,11 @@ TEST(CoffeeBeans, set_grind_Should_Update_CoffeeGrind) {
   CoffeeGrind target = CoffeeGrind::fine;
   beans.set_grind(target);
   ASSERT_EQ(beans.grind(), target);
+}
+
+TEST(CoffeeBeans, set_grind_Should_Throw_If_CoffeeGrind_difference_Negative) {
+  auto beans = fine_beans();
+  CoffeeGrind target = CoffeeGrind::coarse;
+  EXPECT_THROW(beans.set_grind(target), std::runtime_error);
+  ASSERT_NE(beans.grind(), target);
 }
