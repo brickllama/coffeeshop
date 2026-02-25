@@ -4,6 +4,7 @@ import CoffeeGrinder;
 class StubCoffeeGrinder : public CoffeeGrinder {
 public:
   explicit StubCoffeeGrinder(double capacity) : CoffeeGrinder(capacity) {}
+  void grind(CoffeeBeans &, CoffeeGrind) override {}
 };
 
 TEST(CoffeeGrinder, CoffeeGrinder_Should_Throw_If_Capacity_Negative) {

@@ -24,6 +24,7 @@ TEST(CoffeeBeans, CoffeeBeans_Should_Throw_If_Grams_Negative) {
       std::runtime_error);
 }
 
+namespace {
 CoffeeBeans coarse_beans() {
   return CoffeeBeans{15.0, CoffeeRoast::light, CoffeeGrind::coarse};
 }
@@ -31,6 +32,7 @@ CoffeeBeans coarse_beans() {
 CoffeeBeans fine_beans() {
   return CoffeeBeans{15.0, CoffeeRoast::light, CoffeeGrind::fine};
 }
+} // namespace
 
 TEST(CoffeeBeans, grams_Should_Return_Correct_Value) {
   auto beans = coarse_beans();

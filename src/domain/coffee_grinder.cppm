@@ -16,6 +16,8 @@ public:
 
   double capacity() const;
 
+  virtual void grind(CoffeeBeans &beans, CoffeeGrind target_grind) = 0;
+
   virtual ~CoffeeGrinder() {}
 
 private:
