@@ -13,7 +13,7 @@ CoffeeBeans fine_beans() {
 }
 } // namespace
 
-TEST(ManualCoffeeGrinder, grind_Should_Update_CoffeeBeans) {
+TEST(ManualCoffeeGrinder, grind_Should_Change_CoffeeBean_Grind) {
   auto beans = coarse_beans();
   auto target_grind = CoffeeGrind::fine;
 
