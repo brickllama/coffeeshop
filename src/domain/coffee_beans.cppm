@@ -34,6 +34,9 @@ export enum class CoffeeGrind : std::uint8_t {
  */
 export int CoffeeGrind_difference(CoffeeGrind original, CoffeeGrind target);
 
+/**
+ * @brief Coffee Beans.
+ */
 export class CoffeeBeans {
 public:
   /**
