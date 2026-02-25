@@ -1,9 +1,5 @@
-module; /* Global Module Fragment. */
-
-#include <cstdint>
-#include <stdexcept>
-
 export module CoffeeBeans; /* Interface Unit. */
+import std.compat;         /* <cstdint>; <stdexcept> */
 
 /**
  * @brief Different kinds of coffee roasts.
@@ -41,6 +37,16 @@ export constexpr int CoffeeGrind_difference(CoffeeGrind original,
 
 export class CoffeeBeans {
 public:
+  /**
+   * @brief Explicit constructor that accepts weight, roast, and grind
+   * (optional).
+   *
+   * @param grams The weight of the coffee beans in grams.
+   * @param roast The roast of the coffee beans.
+   * @param grind The grind size. Defaults to whole beans.
+   *
+   * @throws std::runtime_error If `grams` value is negative.
+   */
   explicit CoffeeBeans(double grams, CoffeeRoast roast,
                        CoffeeGrind grind = CoffeeGrind::whole)
       : roast_(roast), grind_(grind) {
@@ -50,12 +56,31 @@ public:
     this->grams_ = grams;
   }
 
+  /**
+   * @brief Returns the weight of the coffee bean portion.
+   * @return Weight in grams.
+   */
   double grams() const;
 
+  /**
+   * @brief Returns the roast of the coffee beans.
+   * @return CoffeeRoast enum.
+   */
   CoffeeRoast roast() const;
 
+  /**
+   * @brief Returns the grind of the coffee beans.
+   * @return CoffeeGrind enum.
+   */
   CoffeeGrind grind() const;
 
+  /**
+   * @brief Sets the grind size of the coffee bean portion.
+   *
+   * @param grind The new grind size. Must be equal to or finer than the current
+   * grind.
+   * @throws std::runtime_error if attempting to 'un-grind' the beans.
+   */
   void set_grind(CoffeeGrind target);
 
 private:
