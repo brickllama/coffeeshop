@@ -39,3 +39,7 @@
 
 # debug information files
 *.dwo
+
+# ADDED BY ME
+build/*
+.vscode/*
