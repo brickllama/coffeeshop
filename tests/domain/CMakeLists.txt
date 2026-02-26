@@ -2,6 +2,7 @@ add_executable(domain.tests)
 
 target_sources(domain.tests
     PRIVATE
+        bean_hopper_tests.cpp
         coffee_beans_tests.cpp
         coffee_grinder_tests.cpp
         electric_coffee_grinder_tests.cpp
