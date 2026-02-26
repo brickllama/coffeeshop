@@ -11,5 +11,5 @@ public:
 module :private; /* Implementation Unit. */
 
 void ElectricSteamer::steam(Liquid &liquid, double target_temperature) {
-  //
+  liquid.set_temperature(target_temperature);
 }
