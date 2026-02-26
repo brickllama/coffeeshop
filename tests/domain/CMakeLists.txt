@@ -5,6 +5,7 @@ target_sources(domain.tests
         coffee_beans_tests.cpp
         coffee_grinder_tests.cpp
         electric_coffee_grinder_tests.cpp
+        electric_steamer_tests.cpp
         liquid_tests.cpp
         manual_coffee_grinder_tests.cpp
         steam_wand_tests.cpp
