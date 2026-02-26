@@ -34,6 +34,12 @@ public:
    */
   std::optional<CoffeeBeans> add(const CoffeeBeans &beans);
 
+  /**
+   * @brief Dispenses `CoffeeBeans` from the bean hopper.
+   *
+   * @param grams The desired amount of coffee beans.
+   * @return `CoffeeBeans` The portion of coffee beans.
+   */
   CoffeeBeans dispense(double grams);
 
   /**
@@ -110,14 +116,14 @@ CoffeeBeans BeanHopper::dispense(double grams) {
   if (!this->beans_.has_value() || this->beans_->grams() == 0.0) {
     throw std::runtime_error("BEAN HOPPER NEEDS TO BE REFILLED!");
   }
-  double current_grams = this->grams();
-  double to_dispense = (grams <= current_grams) ? grams : current_grams;
   CoffeeRoast current_roast = this->beans_->roast();
   CoffeeGrind current_grind = this->beans_->grind();
+  double current_grams = this->grams();
+  double to_dispense = (grams <= current_grams) ? grams : current_grams;
   double leftover_grams = current_grams - to_dispense;
 
   if (leftover_grams > 0) {
-    set_beans(leftover_grams, this->beans_->roast());
+    set_beans(leftover_grams, current_roast);
   } else {
     this->beans_.reset();
   }
