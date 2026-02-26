@@ -23,6 +23,7 @@ public:
       throw std::runtime_error("LIQUIDS VOLUME CANNOT BE NEGATIVE!");
     }
     this->volume_ = volume;
+    this->temperature_ = temperature;
   }
 
   /**
@@ -44,10 +45,11 @@ public:
 
 private:
   double volume_;
+  double temperature_;
 };
 
 module :private; /* Implementation Unit. */
 
 double Liquid::volume() const { return this->volume_; }
 
-double Liquid::temperature() const { return std::numeric_limits<int>::min(); }
+double Liquid::temperature() const { return this->temperature_; }
