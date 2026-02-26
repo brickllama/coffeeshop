@@ -110,7 +110,19 @@ CoffeeBeans BeanHopper::dispense(double grams) {
   if (!this->beans_.has_value() || this->beans_->grams() == 0.0) {
     throw std::runtime_error("BEAN HOPPER NEEDS TO BE REFILLED!");
   }
-  return CoffeeBeans{0.0, CoffeeRoast::dark, CoffeeGrind::whole};
+  double current_grams = this->grams();
+  double to_dispense = (grams <= current_grams) ? grams : current_grams;
+  CoffeeRoast current_roast = this->beans_->roast();
+  CoffeeGrind current_grind = this->beans_->grind();
+  double leftover_grams = current_grams - to_dispense;
+
+  if (leftover_grams > 0) {
+    set_beans(leftover_grams, this->beans_->roast());
+  } else {
+    this->beans_.reset();
+  }
+
+  return CoffeeBeans{to_dispense, current_roast, current_grind};
 }
 
 double BeanHopper::grams() const {
