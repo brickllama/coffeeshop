@@ -6,6 +6,7 @@ target_sources(domain
             bean_hopper.cppm
             coffee_beans.cppm
             coffee_grinder.cppm
+            drinks.cppm
             electric_coffee_grinder.cppm
             electric_steamer.cppm
             espresso_machine.cppm
