@@ -27,6 +27,14 @@ TEST(Liquid, volume_Should_Return_Correct_Value) {
 TEST(Liquid, temperature_Should_Return_Correct_Value) {
   double expected_volume = 250.0;
   double expected_temperature = -3.0;
-  StubLiquid l{expected_volume, expected_temperature};
-  ASSERT_EQ(l.temperature(), expected_temperature);
+  StubLiquid sl{expected_volume, expected_temperature};
+  ASSERT_EQ(sl.temperature(), expected_temperature);
+}
+
+TEST(Liquid, set_temperature_Should_Change_Temperature) {
+  double expected_volume = 333.0;
+  StubLiquid sl{expected_volume, fridge_temp};
+  double desired_temperature = 100.0;
+  sl.set_temperature(desired_temperature);
+  ASSERT_EQ(sl.temperature(), desired_temperature);
 }

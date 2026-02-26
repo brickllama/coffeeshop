@@ -38,6 +38,8 @@ public:
    */
   double temperature() const;
 
+  void set_temperature(double target_temperature);
+
   /**
    * @brief Default destructor.
    */
@@ -53,3 +55,7 @@ module :private; /* Implementation Unit. */
 double Liquid::volume() const { return this->volume_; }
 
 double Liquid::temperature() const { return this->temperature_; }
+
+void Liquid::set_temperature(double target_temperature) {
+  //
+}
