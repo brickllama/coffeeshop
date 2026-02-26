@@ -1,9 +1,5 @@
-module;
-
-#include <limits>
-
 export module Liquid; /* Interface Unit. */
-import std;
+import std;           /* <stdexcept> */
 
 /**
  * @brief Any sort of liquid.
@@ -28,12 +24,14 @@ public:
 
   /**
    * @brief Returns the current volume.
+   *
    * @return Volume as a double.
    */
   double volume() const;
 
   /**
    * @brief Returns the current temperature.
+   *
    * @return Temperature as a double.
    */
   double temperature() const;

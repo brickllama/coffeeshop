@@ -1,19 +1,40 @@
-module; /* Global Module Fragment. */
-
-#include <cstdint>
-#include <vector>
-
 export module Drinks; /* Interface Unit. */
-export import Liquid;
+export import Liquid; /* Liquid */
+import std.compat;    /* <vector>; <cstdint> */
 
-export enum class Coffee : std::uint8_t { americano, espresso, macchiato };
+/**
+ * @brief Basic coffees.
+ */
+export enum class Coffee : std::uint8_t {
+  americano, /* ~30ml espresso, ~120ml water. */
+  espresso,  /* ~30ml espresso. */
+  macchiato  /* ~30ml espresso, ~5ml milk. */
+};
 
+/**
+ * @brief A basic drink.
+ */
 export class Drink {
 public:
+  /**
+   * @brief Adds `Liquid` to the drink.
+   *
+   * @param Liquid The liquid.
+   */
   void add(Liquid liquid);
 
+  /**
+   * @brief Returns the list of liquids in the drink.
+   *
+   * @return The liquids as a vector.
+   */
   std::vector<Liquid> liquids() const;
 
+  /**
+   * @brief Returns the total volume of the drink.
+   *
+   * @return The volume as a double.
+   */
   double volume() const;
 
 private:

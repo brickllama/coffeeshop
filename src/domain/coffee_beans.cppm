@@ -30,6 +30,7 @@ export enum class CoffeeGrind : std::uint8_t {
  *
  * @param orignal The original grind.
  * @param target The target grind.
+ *
  * @return An integer.
  */
 export int CoffeeGrind_difference(CoffeeGrind original, CoffeeGrind target);
@@ -60,18 +61,21 @@ public:
 
   /**
    * @brief Returns the weight of the coffee bean portion.
+   *
    * @return Weight in grams.
    */
   double grams() const;
 
   /**
    * @brief Returns the roast of the coffee beans.
+   *
    * @return CoffeeRoast enum.
    */
   CoffeeRoast roast() const;
 
   /**
    * @brief Returns the grind of the coffee beans.
+   *
    * @return CoffeeGrind enum.
    */
   CoffeeGrind grind() const;
@@ -81,6 +85,7 @@ public:
    *
    * @param target The new grind size. Must be equal to or finer than the
    * current grind.
+   *
    * @throws std::runtime_error if attempting to 'un-grind' the beans.
    */
   void set_grind(CoffeeGrind target);

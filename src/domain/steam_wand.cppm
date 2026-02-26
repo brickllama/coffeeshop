@@ -1,11 +1,19 @@
-module; /* Global Module Fragment. */
-
 export module SteamWand;
 export import Steamer;
 
+/**
+ * @brief A handheld steamer.
+ *
+ * @note This class derives from `Steamer`.
+ */
 export class SteamWand : public Steamer {
 public:
-  explicit SteamWand() {}
+  /**
+   * @brief Heats the liquid to its desired temperature.
+   *
+   * @param liquid The liquid.
+   * @param target_temperature The desired temperature.
+   */
   void steam(Liquid &liquid, double target_temperature) override;
 };
 

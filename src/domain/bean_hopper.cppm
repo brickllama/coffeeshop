@@ -1,11 +1,6 @@
-module; /* Global Module Fragment. */
-
-#include <limits>
-#include <optional>
-#include <stdexcept>
-
 export module BeanHopper;  /* Interface Unit. */
 export import CoffeeBeans; /* CoffeeBeans; CoffeeGrind; CoffeeRoast */
+import std;                /* <limits>; <optional>; <stdexcept> */
 
 /**
  * @brief A bean hopper.
@@ -30,6 +25,7 @@ public:
    * @brief Adds `CoffeeBeans` to the bean hopper.
    *
    * @param beans The coffee beans.
+   *
    * @return `CoffeeBeans` IF LEFTOVERS PERSIST.
    */
   std::optional<CoffeeBeans> add(const CoffeeBeans &beans);
@@ -38,18 +34,21 @@ public:
    * @brief Dispenses `CoffeeBeans` from the bean hopper.
    *
    * @param grams The desired amount of coffee beans.
+   *
    * @return `CoffeeBeans` The portion of coffee beans.
    */
   CoffeeBeans dispense(double grams);
 
   /**
    * @brief Returns the current amount of beans in grams.
+   *
    * @return Grams as a double.
    */
   double grams() const;
 
   /**
    * @brief Returns the supported capacity.
+   *
    * @return Capacity as a double.
    */
   double capacity() const;
@@ -60,6 +59,7 @@ private:
    *
    * @param a The former set of beans.
    * @param b The latter set of beans.
+   *
    * @return `CoffeeRoast` as the most-common roast.
    */
   CoffeeRoast common_roast(const CoffeeBeans &a, const CoffeeBeans &b);

@@ -25,6 +25,7 @@ public:
 
   /**
    * @brief Returns the supported capacity.
+   *
    * @return Capacity as a double.
    */
   double capacity() const;
