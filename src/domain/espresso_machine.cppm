@@ -32,4 +32,8 @@ private:
 
 module :private; /* Implementation Unit. */
 
-Liquid EspressoMachine::extract_espresso() { return Liquid{1.0, 1.0}; }
+Liquid EspressoMachine::extract_espresso() {
+  CoffeeBeans beans = this->bean_hopper_->dispense(single_shot);
+  double volume = beans.grams() * espresso_pull_ratio;
+  return Liquid{volume, fresh_espresso_temperature};
+}
