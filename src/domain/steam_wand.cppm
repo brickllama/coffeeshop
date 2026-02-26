@@ -12,5 +12,5 @@ public:
 module :private;
 
 void SteamWand::steam(Liquid &liquid, double target_temperature) {
-  //
+  liquid.set_temperature(target_temperature);
 }
