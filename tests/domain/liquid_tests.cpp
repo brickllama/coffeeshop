@@ -3,13 +3,13 @@ import Liquid;
 
 namespace {
 
+constexpr double fridge_temp = 4.0;
+
 class StubLiquid : public Liquid {
 public:
   explicit StubLiquid(double volume, double temperature)
       : Liquid(volume, temperature) {}
 };
-
-constexpr double fridge_temp = 4.0;
 
 } // namespace
 

@@ -1,11 +1,15 @@
 #include <gtest/gtest.h>
 import CoffeeGrinder;
 
+namespace {
+
 class StubCoffeeGrinder : public CoffeeGrinder {
 public:
   explicit StubCoffeeGrinder(double capacity) : CoffeeGrinder(capacity) {}
   void grind(CoffeeBeans &, CoffeeGrind) override {}
 };
+
+} // namespace
 
 TEST(CoffeeGrinder, CoffeeGrinder_Should_Throw_If_Capacity_Negative) {
   double illegal_capacity = -15.0;

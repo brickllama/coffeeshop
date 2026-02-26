@@ -8,4 +8,6 @@ target_sources(domain
             electric_coffee_grinder.cppm
             liquid.cppm
             manual_coffee_grinder.cppm
+            steamer.cppm
+            steam_wand.cppm
 )

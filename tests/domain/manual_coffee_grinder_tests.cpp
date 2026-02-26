@@ -2,6 +2,7 @@
 import ManualCoffeeGrinder;
 
 namespace {
+
 double standard_puck_size = 20.0;
 
 CoffeeBeans coarse_beans() {
@@ -11,6 +12,7 @@ CoffeeBeans coarse_beans() {
 // CoffeeBeans fine_beans() {
 //   return CoffeeBeans{15.0, CoffeeRoast::light, CoffeeGrind::fine};
 // }
+
 } // namespace
 
 TEST(ManualCoffeeGrinder, grind_Should_Change_CoffeeBean_Grind) {

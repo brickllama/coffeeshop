@@ -7,6 +7,7 @@ target_sources(domain.tests
         electric_coffee_grinder_tests.cpp
         liquid_tests.cpp
         manual_coffee_grinder_tests.cpp
+        steam_wand_tests.cpp
 )
 
 target_link_libraries(domain.tests
