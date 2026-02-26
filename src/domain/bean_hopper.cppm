@@ -34,6 +34,8 @@ public:
    */
   std::optional<CoffeeBeans> add(const CoffeeBeans &beans);
 
+  CoffeeBeans dispense(double grams);
+
   /**
    * @brief Returns the current amount of beans in grams.
    * @return Grams as a double.
@@ -97,6 +99,10 @@ std::optional<CoffeeBeans> BeanHopper::add(const CoffeeBeans &beans) {
   this->set_beans(total_grams, roast);
 
   return std::nullopt;
+}
+
+CoffeeBeans BeanHopper::dispense(double grams) {
+  return CoffeeBeans{0.00, this->beans_->roast(), this->beans_->grind()};
 }
 
 double BeanHopper::grams() const {

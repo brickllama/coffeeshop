@@ -47,3 +47,13 @@ TEST(BeanHopper, add_Should_Work_In_Typical_Use) {
 
   ASSERT_EQ(bh.grams(), beans.grams());
 }
+
+TEST(BeanHopper, dispense_Should_Throw_If_Request_Negative) {
+  double capacity = 200.0;
+  BeanHopper bh{capacity};
+  auto beans = light_roast();
+  auto leftover = bh.add(beans);
+  EXPECT_FALSE(leftover.has_value());
+
+  ASSERT_THROW(bh.dispense(-1), std::runtime_error);
+}
