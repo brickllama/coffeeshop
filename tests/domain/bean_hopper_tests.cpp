@@ -37,7 +37,7 @@ TEST(BeanHopper, add_Should_Return_Beans_If_Surplus_Amount) {
   ASSERT_EQ(leftover->grams(), expected_remainder);
 }
 
-TEST(BeanHopper, add_Should_Work_In_Typical_Use) {
+TEST(BeanHopper, add_Should_Increase_Beans) {
   double capacity = 200.0;
   BeanHopper bh{capacity};
   auto beans = light_roast();
@@ -56,4 +56,12 @@ TEST(BeanHopper, dispense_Should_Throw_If_Request_Negative) {
   EXPECT_FALSE(leftover.has_value());
 
   ASSERT_THROW(bh.dispense(-1), std::runtime_error);
+}
+
+TEST(BeanHopper, dispense_Should_Throw_If_Empty) {
+  double capacity = 250.0;
+  BeanHopper bh{capacity};
+
+  double desired_grams = 20.0;
+  ASSERT_THROW(bh.dispense(desired_grams), std::runtime_error);
 }
