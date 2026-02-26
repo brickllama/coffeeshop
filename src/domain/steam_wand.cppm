@@ -2,7 +2,7 @@ export module SteamWand;
 export import Steamer;
 
 /**
- * @brief A handheld steamer.
+ * @brief A rod which extends from the espresso machine.
  *
  * @note This class derives from `Steamer`.
  */

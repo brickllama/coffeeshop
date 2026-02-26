@@ -2,7 +2,7 @@ export module ElectricSteamer; /* Interface Unit. */
 export import Steamer;         /* Steamer */
 
 /**
- * @brief An electric steamer.
+ * @brief An electric steamer (portable).
  *
  * @note This class derives from `Steamer`.
  */

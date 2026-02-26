@@ -1,6 +1,6 @@
 export module Drinks; /* Interface Unit. */
 export import Liquid; /* Liquid */
-import std.compat;    /* <vector>; <cstdint> */
+import std.compat;    /* <cstdint>; <string_view>; utility>; <vector> */
 
 /**
  * @brief Basic coffees.
@@ -10,6 +10,19 @@ export enum class Coffee : std::uint8_t {
   espresso,  /* ~30ml espresso. */
   macchiato  /* ~30ml espresso, ~5ml milk. */
 };
+
+export constexpr std::string_view Coffee_as_string(Coffee coffee) {
+  switch (coffee) {
+  case Coffee::americano:
+    return "Americano";
+  case Coffee::espresso:
+    return "Espresso";
+  case Coffee::macchiato:
+    return "Macchiato";
+  [[unlikely]] default:
+    std::unreachable();
+  }
+}
 
 /**
  * @brief A basic drink.
