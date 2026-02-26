@@ -38,7 +38,12 @@ public:
    */
   double temperature() const;
 
-  void set_temperature(double target_temperature);
+  /**
+   * @brief Sets the temperature of the liquid.
+   *
+   * @param target The new temperature.
+   */
+  void set_temperature(double target);
 
   /**
    * @brief Default destructor.
@@ -56,6 +61,4 @@ double Liquid::volume() const { return this->volume_; }
 
 double Liquid::temperature() const { return this->temperature_; }
 
-void Liquid::set_temperature(double target_temperature) {
-  this->temperature_ = target_temperature;
-}
+void Liquid::set_temperature(double target) { this->temperature_ = target; }

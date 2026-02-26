@@ -79,8 +79,8 @@ public:
   /**
    * @brief Sets the grind size of the coffee bean portion.
    *
-   * @param grind The new grind size. Must be equal to or finer than the current
-   * grind.
+   * @param target The new grind size. Must be equal to or finer than the
+   * current grind.
    * @throws std::runtime_error if attempting to 'un-grind' the beans.
    */
   void set_grind(CoffeeGrind target);
