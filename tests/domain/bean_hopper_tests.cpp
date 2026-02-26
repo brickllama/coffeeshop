@@ -65,3 +65,19 @@ TEST(BeanHopper, dispense_Should_Throw_If_Empty) {
   double desired_grams = 20.0;
   ASSERT_THROW(bh.dispense(desired_grams), std::runtime_error);
 }
+
+TEST(BeanHopper, dispense_Should_Lower_Beans) {
+  double capacity = 200.0;
+  BeanHopper bh{capacity};
+  auto beans = light_roast();
+  auto leftover = bh.add(beans);
+  EXPECT_FALSE(leftover.has_value());
+
+  double original_grams = bh.grams();
+  double desired_grams = 10.0;
+  CoffeeBeans dispensed_beans = bh.dispense(desired_grams);
+  EXPECT_EQ(dispensed_beans.grams(), desired_grams);
+
+  double expected_result = original_grams - desired_grams;
+  ASSERT_EQ(bh.grams(), expected_result);
+}

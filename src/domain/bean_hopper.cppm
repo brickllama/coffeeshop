@@ -110,8 +110,7 @@ CoffeeBeans BeanHopper::dispense(double grams) {
   if (!this->beans_.has_value() || this->beans_->grams() == 0.0) {
     throw std::runtime_error("BEAN HOPPER NEEDS TO BE REFILLED!");
   }
-
-  return CoffeeBeans{0.00, CoffeeRoast::dark, CoffeeGrind::whole};
+  return CoffeeBeans{0.0, CoffeeRoast::dark, CoffeeGrind::whole};
 }
 
 double BeanHopper::grams() const {
