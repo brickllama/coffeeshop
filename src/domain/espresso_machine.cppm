@@ -5,7 +5,13 @@ module; /* Global Module Fragment. */
 export module EspressoMachine; /* Interface Unit. */
 export import BeanHopper;      /* BeanHopper */
 export import CoffeeGrinder;   /* CoffeeGrinder */
+export import Drinks;          /* Coffee; Drink */
 export import Steamer;         /* Steamer */
+
+export constexpr double single_shot = 10.0;
+export constexpr double double_shot = 20.0;
+export constexpr double espresso_pull_ratio = 3.0;
+export constexpr double fresh_espresso_temperature = 94.0;
 
 export class EspressoMachine {
 public:
@@ -16,7 +22,7 @@ public:
         coffee_grinder_(std::move(coffee_grinder)),
         steamer_(std::move(steamer)) {}
 
-  Liquid brew();
+  Liquid extract_espresso();
 
 private:
   std::unique_ptr<BeanHopper> bean_hopper_;
@@ -26,4 +32,4 @@ private:
 
 module :private; /* Implementation Unit. */
 
-Liquid EspressoMachine::brew() { return Liquid{300.0, 4.0}; }
+Liquid EspressoMachine::extract_espresso() { return Liquid{1.0, 1.0}; }
