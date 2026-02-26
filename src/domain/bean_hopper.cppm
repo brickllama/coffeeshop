@@ -49,15 +49,22 @@ std::optional<CoffeeBeans> BeanHopper::add(const CoffeeBeans &beans) {
   double total_grams = current_grams + beans.grams();
 
   if (total_grams > this->capacity()) {
-    return CoffeeBeans{std::numeric_limits<int>::max(), beans.roast(),
-                       CoffeeGrind::whole};
+    double overflow = total_grams - this->capacity();
+    this->beans_ = CoffeeBeans{this->capacity(), most_common_roast,
+                               CoffeeGrind::whole}; /* SET BEANS */
+
+    return CoffeeBeans{overflow, beans.roast(),
+                       CoffeeGrind::whole}; /* RETURN THE REMAINING BEANS*/
   }
 
-  return std::nullopt;
+  this->beans_ = CoffeeBeans{total_grams, most_common_roast,
+                             CoffeeGrind::whole}; /* SET BEANS */
+
+  return std::nullopt; /* RETURN NOTHING */
 }
 
 double BeanHopper::grams() const {
-  return this->beans_ ? this->beans_->grams() : 0.0;
+  return this->beans_.has_value() ? this->beans_->grams() : 0.0;
 }
 
 double BeanHopper::capacity() const { return this->capacity_; }

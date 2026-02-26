@@ -36,3 +36,14 @@ TEST(BeanHopper, add_Should_Return_Beans_If_Surplus_Amount) {
   auto leftover = bh.add(beans);
   ASSERT_EQ(leftover->grams(), expected_remainder);
 }
+
+TEST(BeanHopper, add_Should_Work_In_Typical_Use) {
+  double capacity = 200.0;
+  BeanHopper bh{capacity};
+  auto beans = light_roast();
+
+  auto leftover = bh.add(beans);
+  EXPECT_FALSE(leftover.has_value());
+
+  ASSERT_EQ(bh.grams(), beans.grams());
+}
