@@ -29,6 +29,10 @@ private:
 module :private; /* Implementation Unit. */
 
 std::optional<CoffeeBeans> BeanHopper::add(const CoffeeBeans &beans) {
+  if (beans.grind() != CoffeeGrind::whole) {
+    throw std::runtime_error(
+        "BEAN HOPPER DOES NOT ALLOW NON-WHOLE COFFEE BEANS!");
+  }
   return std::nullopt;
 }
 
