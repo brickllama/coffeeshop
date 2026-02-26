@@ -7,8 +7,18 @@ module; /* Global Module Fragment. */
 export module BeanHopper;  /* Interface Unit. */
 export import CoffeeBeans; /* CoffeeBeans; CoffeeGrind; CoffeeRoast */
 
+/**
+ * @brief A bean hopper.
+ */
 export class BeanHopper {
 public:
+  /**
+   * @brief Explicit constructor that accepts the supported capacity.
+   *
+   * @param capacity The supported capacity.
+   *
+   * @throw std::runtime_error if `capacity` is negative.
+   */
   explicit BeanHopper(double capacity) {
     if (capacity < 0) {
       throw std::runtime_error("BEAN HOPPER CAPACITY CANNOT BE NEGATIVE!");
@@ -16,13 +26,44 @@ public:
     this->capacity_ = capacity;
   }
 
+  /**
+   * @brief Adds `CoffeeBeans` to the bean hopper.
+   *
+   * @param beans The coffee beans.
+   * @return `CoffeeBeans` IF LEFTOVERS PERSIST.
+   */
   std::optional<CoffeeBeans> add(const CoffeeBeans &beans);
 
+  /**
+   * @brief Returns the current amount of beans in grams.
+   * @return Grams as a double.
+   */
   double grams() const;
 
+  /**
+   * @brief Returns the supported capacity.
+   * @return Capacity as a double.
+   */
   double capacity() const;
 
 private:
+  /**
+   * @brief Returns the roast of the greater `CoffeeBean` quantity.
+   *
+   * @param a The former set of beans.
+   * @param b The latter set of beans.
+   * @return `CoffeeRoast` as the most-common roast.
+   */
+  CoffeeRoast common_roast(const CoffeeBeans &a, const CoffeeBeans &b);
+
+  /**
+   * @brief Sets the beans used by the bean hopper.
+   *
+   * @param grams The weight in grams.
+   * @param roast The type of roast.
+   */
+  void set_beans(double grams, CoffeeRoast roast);
+
   double capacity_;
   std::optional<CoffeeBeans> beans_;
 };
@@ -36,31 +77,26 @@ std::optional<CoffeeBeans> BeanHopper::add(const CoffeeBeans &beans) {
   }
 
   double current_grams;
-  CoffeeRoast most_common_roast;
+  CoffeeRoast roast;
   if (this->beans_.has_value()) {
     current_grams = this->beans_->grams();
-    most_common_roast = (this->beans_->grams() >= beans.grams())
-                            ? this->beans_->roast()
-                            : beans.roast();
+    roast = common_roast(this->beans_.value(), beans);
   } else {
     current_grams = 0.0;
-    most_common_roast = beans.roast();
+    roast = beans.roast();
   }
   double total_grams = current_grams + beans.grams();
 
   if (total_grams > this->capacity()) {
-    double overflow = total_grams - this->capacity();
-    this->beans_ = CoffeeBeans{this->capacity(), most_common_roast,
-                               CoffeeGrind::whole}; /* SET BEANS */
+    double leftover_grams = total_grams - this->capacity();
+    this->set_beans(this->capacity(), roast);
 
-    return CoffeeBeans{overflow, beans.roast(),
-                       CoffeeGrind::whole}; /* RETURN THE REMAINING BEANS*/
+    return CoffeeBeans{leftover_grams, beans.roast(), CoffeeGrind::whole};
   }
 
-  this->beans_ = CoffeeBeans{total_grams, most_common_roast,
-                             CoffeeGrind::whole}; /* SET BEANS */
+  this->set_beans(total_grams, roast);
 
-  return std::nullopt; /* RETURN NOTHING */
+  return std::nullopt;
 }
 
 double BeanHopper::grams() const {
@@ -68,3 +104,12 @@ double BeanHopper::grams() const {
 }
 
 double BeanHopper::capacity() const { return this->capacity_; }
+
+CoffeeRoast BeanHopper::common_roast(const CoffeeBeans &a,
+                                     const CoffeeBeans &b) {
+  return (a.roast() >= b.roast()) ? a.roast() : b.roast();
+}
+
+void BeanHopper::set_beans(double grams, CoffeeRoast roast) {
+  this->beans_ = CoffeeBeans{grams, roast, CoffeeGrind::whole};
+}
