@@ -16,6 +16,4 @@ public:
 
 module :private; /* Implementation Unit. */
 
-void Drink::add(Liquid liquid) {
-  //
-}
+void Drink::add(Liquid liquid) { this->liquids_.push_back(liquid); }

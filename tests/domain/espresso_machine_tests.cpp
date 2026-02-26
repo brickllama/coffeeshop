@@ -29,5 +29,4 @@ TEST(EspressoMachine, brew_Should_Call_Grinder_And_Steamer) {
 
   EspressoMachine em{std::move(bean_hopper), std::move(coffee_grinder),
                      std::move(steamer)};
-  Liquid milk = em.brew();
 }

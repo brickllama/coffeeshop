@@ -9,6 +9,7 @@ target_sources(domain.tests
         bean_hopper_tests.cpp
         coffee_beans_tests.cpp
         coffee_grinder_tests.cpp
+        drinks_tests.cpp
         electric_coffee_grinder_tests.cpp
         electric_steamer_tests.cpp
         espresso_machine_tests.cpp
