@@ -26,4 +26,10 @@ void Drink::add(Liquid liquid) { this->liquids_.push_back(liquid); }
 
 std::vector<Liquid> Drink::liquids() const { return this->liquids_; }
 
-double Drink::volume() const { return -1; }
+double Drink::volume() const {
+  double volume = 0;
+  for (const auto &l : this->liquids_) {
+    volume += l.volume();
+  }
+  return volume;
+}
