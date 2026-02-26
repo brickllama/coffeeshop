@@ -6,7 +6,7 @@ import std.compat;
 constexpr double hopper_capacity = 200.0;
 constexpr double nonexistent_capacity = 0.0;
 
-constexpr std::string_view selection_prompt = R"(
+constexpr std::string_view coffee_selection_prompt = R"(
 Choose a coffee:
 1: Americano
 2: Espresso
@@ -14,9 +14,37 @@ Choose a coffee:
 0: Exit
 )";
 
+constexpr std::string_view roast_selection_prompt = R"(
+  Choose roast
+  1: Light,
+  2: Medium,
+  3: Dark
+  0: Exit
+)";
+
+void refill_menu(EspressoMachine &espresso_machine) {
+  std::println("Enter grams of beans to add: ");
+  double grams;
+  std::cin >> grams;
+
+  std::println("{}", roast_selection_prompt);
+  int choice;
+  std::cin >> choice;
+
+  CoffeeRoast roast = static_cast<CoffeeRoast>(choice - 1);
+  CoffeeBeans new_beans{grams, roast, CoffeeGrind::whole};
+
+  try {
+    espresso_machine.refill_hopper(new_beans);
+    std::println("HOPPER REFILLED!");
+  } catch (std::runtime_error &e) {
+    std::println("Error: {}", e.what());
+  }
+}
+
 void main_menu(EspressoMachine &espresso_machine) {
   while (true) {
-    std::println("{}", selection_prompt);
+    std::println("{}", coffee_selection_prompt);
     int choice;
     std::cin >> choice;
 
@@ -31,9 +59,17 @@ void main_menu(EspressoMachine &espresso_machine) {
     }
 
     Coffee coffee = static_cast<Coffee>(choice - 1);
-    Drink beverage = espresso_machine.brew(coffee);
-    std::println("Enjoy your {}!", Coffee_as_string(coffee));
-    break;
+    try
+    {
+      Drink beverage = espresso_machine.brew(coffee);
+      std::println("Enjoy your {}!", Coffee_as_string(coffee));
+    } catch(std::runtime_error& e) {
+      if (std::string(e.what()) == "BEAN HOPPER NEEDS TO BE REFILLED!") {
+        refill_menu(espresso_machine);
+      } else {
+        std::println("Error: {}", e.what());
+      }
+    }
   }
 }
 

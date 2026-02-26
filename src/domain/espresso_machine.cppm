@@ -23,7 +23,10 @@ public:
         coffee_grinder_(std::move(coffee_grinder)),
         steamer_(std::move(steamer)) {}
 
+  void refill_hopper(CoffeeBeans& beans);
+
   Drink brew(Coffee coffee);
+
   Liquid extract_espresso();
 
 private:
@@ -37,6 +40,10 @@ private:
 };
 
 module :private; /* Implementation Unit. */
+
+void EspressoMachine::refill_hopper(CoffeeBeans& beans) {
+  this->bean_hopper_->add(beans);
+}
 
 Drink EspressoMachine::brew(Coffee coffee) {
   switch (coffee) {
