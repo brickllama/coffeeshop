@@ -102,6 +102,10 @@ std::optional<CoffeeBeans> BeanHopper::add(const CoffeeBeans &beans) {
 }
 
 CoffeeBeans BeanHopper::dispense(double grams) {
+  if (grams < 0) {
+    throw std::runtime_error(
+        "BEAN HOPPER CANNOT DISPENSE NEGATIVE AMOUNT OF BEANS!");
+  }
   return CoffeeBeans{0.00, this->beans_->roast(), this->beans_->grind()};
 }
 
